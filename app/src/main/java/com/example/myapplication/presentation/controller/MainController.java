@@ -1,16 +1,13 @@
 package com.example.myapplication.presentation.controller;
 
-import android.content.Context;
 import android.content.SharedPreferences;
-import android.widget.Toast;
 
 import com.example.myapplication.Constants;
-import com.example.myapplication.data.PokeApi;
+import com.example.myapplication.Singletons;
 import com.example.myapplication.presentation.model.Pokemon;
 import com.example.myapplication.presentation.model.RestPokemonResponse;
 import com.example.myapplication.presentation.view.MainActivity;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
@@ -19,10 +16,6 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
-
-import static com.example.myapplication.Constants.BASE_URL;
 
 public class MainController {
 
@@ -52,14 +45,7 @@ public class MainController {
 
     private void makeApiCall(){
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(Constants.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .build();
-
-        PokeApi pokeApi= retrofit.create(PokeApi.class);
-
-        Call<RestPokemonResponse> call = pokeApi.getPokemonResponse();
+        Call<RestPokemonResponse> call = Singletons.getPokeApi().getPokemonResponse();
         call.enqueue(new Callback<RestPokemonResponse>() {
             @Override
             public void onResponse(Call<RestPokemonResponse> call, Response<RestPokemonResponse> response) {
