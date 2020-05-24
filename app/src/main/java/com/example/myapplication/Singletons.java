@@ -38,11 +38,11 @@ public class Singletons {
 
     }
 
-    public static SharedPreferences getSharedPreferencesInstance(Context context){
-        if(sharedPreferencesInstance == null){
-            sharedPreferencesInstance =   context.getSharedPreferences("application_esiea", Context.MODE_PRIVATE);
+    public static SharedPreferences getSharedPreferencesInstance(Context context) {
+        if (sharedPreferencesInstance == null) {
+            sharedPreferencesInstance = context.getSharedPreferences("application_esiea", Context.MODE_PRIVATE);
 
         }
-        return gsonInstance;
+        return sharedPreferencesInstance;
     }
 }
