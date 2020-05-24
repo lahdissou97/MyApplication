@@ -1,4 +1,6 @@
-package com.example.myapplication;
+package com.example.myapplication.presentation.model;
+
+import com.example.myapplication.presentation.model.Pokemon;
 
 import java.util.List;
 
